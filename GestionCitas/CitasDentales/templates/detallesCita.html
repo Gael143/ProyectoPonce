@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles de la Cita</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <style>
+        body {
+            background-color: #f8f9fa; 
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #007bff;
+            text-align: center;
+        }
+
+        p {
+            margin-bottom: 10px; 
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container mt-5" style="text-align: center;">
+        <h2 class="text-center mb-4">Detalles de la Cita</h2>
+        {% if cita %}
+        <p><strong>Usuario:</strong> {{ cita.paciente }}</p>
+        <p><strong>Fecha:</strong> {{ cita.fecha }}</p>
+        <p><strong>Hora:</strong> {{ cita.hora }}</p>
+        <p><strong>Duración:</strong> {{ cita.duracion }} minutos</p>
+        <p><strong>Motivo:</strong> {{ cita.motivo }}</p>
+        {% else %}
+        <p>La cita no existe o no se encontró.</p>
+        {% endif %}
+
+        <a href="{% url 'proceder_pago' cita_id=cita.id %}" class="btn btn-primary">Proceder al Pago</a>
+
+        <a href="{% url 'agenda_cita' %}" class="btn btn-secondary">Volver</a>
+    </div>
+ 
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-U7jvPpEc9zE/1FpzDlJnIuPHW1AdSHKxazw3b/x/5f9RXMEbd7jBkoy5Pj7tdI" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
